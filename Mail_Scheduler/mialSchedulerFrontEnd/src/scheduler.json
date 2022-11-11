@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "dFaccName": "Office Account",
+      "dFemail": "tejupatil1210@gmail.com",
+      "dFpass": "123456",
+      "dFincServer": "Imap",
+      "dFincServPort": "998",
+      "dFoutServer": "smtp",
+      "dFoutServPort": "465",
+      "id": 1
+    },
+    {
+      "dFaccName": "home Account",
+      "dFemail": "tejupatil1210@outlook.com",
+      "dFpass": "123456",
+      "dFincServer": "Imap",
+      "dFincServPort": "995",
+      "dFoutServer": "smtp",
+      "dFoutServPort": "465",
+      "id": 4
+    },
+    {
+      "dFaccName": "Home Account 2",
+      "dFemail": "tejupatil1210@yahoo.com",
+      "dFpass": "123456",
+      "dFincServer": "smtp",
+      "dFincServPort": "154",
+      "dFoutServer": "isp",
+      "dFoutServPort": "142",
+      "id": 6
+    }
+  ]
+}

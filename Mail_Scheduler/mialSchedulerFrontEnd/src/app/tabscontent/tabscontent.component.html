@@ -1,0 +1,165 @@
+<!-- <h3 style="color: white;"> tabscontent works!</h3> -->
+<!-- <mat-tab-group>
+    <mat-tab label="First">
+      <ng-template matTabContent>
+        Content 1 - Loaded: {{getTimeLoaded(1) | date:'medium'}}
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Second">
+      <ng-template matTabContent>
+        Content 2 - Loaded: {{getTimeLoaded(2) | date:'medium'}}
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Third">
+      <ng-template matTabContent>
+        Content 3 - Loaded: {{getTimeLoaded(3) | date:'medium'}}
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group> -->
+  <!-- <h3>No animation</h3> -->
+  <div style="float: left;" >
+  <mat-tab-group animationDuration="0ms" style="margin-top: 14.5px;width:516px;" >
+  <mat-tab label="Scheduled Emails" style="color:white ;display: inline-block;" >
+    <mat-nav-list >
+    <div >
+     <a mat-list-item (click)="fetchEmail(x)" *ngFor="let x of emailsData" style="border-bottom:1px solid grey; height:70px ;">
+    {{x.eFormTo}}<br>{{x.eFormSubject}}<br>{{x.eFormBody}}
+    <div style="margin-left:400px;position:absolute;"> 
+    
+      <br>
+      <mat-icon style="margin-right: 0px;">event</mat-icon>
+      <br>
+      {{x.eFormTime}}
+    </div>
+    </a>
+  </div>
+    </mat-nav-list>
+  </mat-tab>
+    <mat-tab label="Sent Emails">Content 2</mat-tab>
+  </mat-tab-group>
+</div>
+
+
+<div style="background-color: rgb(67, 64, 64); width:680px;margin-left:516px;margin-top:12px;" *ngIf=emailmainform>
+    
+    <form [formGroup]="emailForm" style="margin-left:15px;">
+        <h1 style="padding-top: 16px; display: inline-block;">Scheduler Email</h1>
+        <h4 style="padding-top: 16px; display: inline-block;margin-left:400px;">New Email</h4>
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 650px;margin-top: -8px;">
+            <mat-label>To</mat-label>
+            <input type="email" matInput formControlName="eFormTo" >
+            <mat-error *ngIf="emailForm.controls['eFormTo'].hasError('required')">Please enter a valid email address</mat-error>
+            <mat-error *ngIf="emailForm.controls['eFormTo'].hasError('required')">Email is <strong>required</strong></mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill" style="width: 650px;">
+            <mat-label>CC</mat-label>
+            <input type="email" matInput formControlName="eFormCc" >
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill" style="width: 650px;">
+            <mat-label>Bcc</mat-label>
+            <input type="email" matInput formControlName="eFormBcc" >
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill" style="width: 650px;">
+            <mat-label>Subject</mat-label>
+            <input type="text" matInput formControlName="eFormSubject" >
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill" style="width: 650px;">
+            <mat-label>Body</mat-label>
+            <textarea matInput placeholder="Enter Description" formControlName="eFormBody" style="height: 120px;"></textarea>   
+        </mat-form-field>
+
+          <mat-form-field appearance="fill"> 
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="eFormDate">
+          <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" style="margin-left: 15px;">
+            <mat-label>Event Start Time</mat-label>
+            <input matInput type="time"   formControlName="eFormTime">   
+        </mat-form-field>
+        <br>
+        <button mat-raised-button (click)="storeEmaildata()" [disabled]="emailForm.invalid">Schedule Email</button>
+        <button mat-raised-button style="margin-left: 10px;">Discard Changes</button>
+        <br>
+        <br>
+    
+    </form>
+</div>
+
+
+<div style="background-color: rgb(67, 64, 64); width:680px;margin-left: 516px; margin-top: 12px;" *ngIf=emailEditform>
+    
+  <form [formGroup]="emailForm" style="margin-left:15px;">
+      <h1 style="padding-top: 16px; display: inline-block;">Scheduler Email</h1>
+      <h4 style="padding-top: 16px; display: inline-block;margin-left:400px;">New Email</h4>
+      <mat-form-field class="example-full-width" appearance="fill" style="width: 650px;margin-top: -8px;">
+          <mat-label>To</mat-label>
+          <input type="email" matInput formControlName="eFormTo" >
+          <mat-error *ngIf="emailForm.controls['eFormTo'].hasError('required')">Please enter a valid email address</mat-error>
+          <mat-error *ngIf="emailForm.controls['eFormTo'].hasError('required')">Email is <strong>required</strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 650px;">
+          <mat-label>CC</mat-label>
+          <input type="email" matInput formControlName="eFormCc" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 650px;">
+          <mat-label>Bcc</mat-label>
+          <input type="email" matInput formControlName="eFormBcc" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 650px;">
+          <mat-label>Subject</mat-label>
+          <input type="text" matInput formControlName="eFormSubject" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 650px;">
+          <mat-label>Body</mat-label>
+          <textarea matInput placeholder="Enter Description" formControlName="eFormBody" style="height: 120px;"></textarea>   
+      </mat-form-field>
+
+        <mat-form-field appearance="fill"> 
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="eFormDate">
+        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill" style="margin-left: 15px;">
+          <mat-label>Event Start Time</mat-label>
+          <input matInput type="time"   formControlName="eFormTime">   
+      </mat-form-field>
+      <br>
+      <button mat-raised-button (click)="updateEmail()" [disabled]="emailForm.invalid">Schedule Email</button>
+      <button mat-raised-button style="margin-left: 10px;">Discard Changes</button>
+      <br>
+      <br>
+  
+
+
+
+  </form>
+</div>
+
+
+  <!-- <mat-tab-group preserveContent>
+    <mat-tab label="First">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/B-lipaiZII8"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </mat-tab>
+    <mat-tab label="Second">Note how the video from the previous tab is still playing.</mat-tab>
+  </mat-tab-group> -->

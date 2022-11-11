@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()"
+    *ngIf="isHandset$ | async">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <span>Mail Scheduler</span>
+  <button mat-button style="margin-left:1100px ;" *ngIf=editButton (click)="openDialog1()"><mat-icon style="font-size: 20px;padding-top: 6px;">settings</mat-icon><span style="padding: 6px;padding-left:0px;font-size:17px;">{{buttonName}}</span></button>
+  <button mat-button (click)="logOut()" style="margin-left:1390px ; position:fixed;"><mat-icon>exit_to_app</mat-icon>Logout</button>
+
+
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" 
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false" style="width: 320px; background-color: rgb(51, 49, 49);border:0px;">
+    <!-- <mat-toolbar>Menu</mat-toolbar> -->
+    <mat-nav-list >
+      <a mat-list-item  style="padding-top: 2px;padding-bottom:3.2px; " (click)="openDialog()"><mat-icon style="padding:6px;">add</mat-icon>Add Account</a>
+      <a mat-list-item style=" padding-top: 6px;padding-bottom:6px;" ><mat-icon style="padding:6px;">person_outline </mat-icon><span> Accounts</span></a>
+      <div *ngFor="let x of msgfromchild">
+      <a mat-list-item style=" padding-top: 6px;padding-bottom:6px;"  (click)="displaybutton(x)" >
+      {{x.dFaccName }} <br>{{x.dFemail}}</a>
+    </div>
+      <!-- <a mat-list-item href="#"></a> -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    
+    <app-tabscontent [data]=xyz></app-tabscontent>
+    <!-- <router-outlet [data]=xyz></router-outlet> -->
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

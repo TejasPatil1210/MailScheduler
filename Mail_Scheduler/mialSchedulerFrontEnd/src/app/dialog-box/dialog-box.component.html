@@ -1,0 +1,49 @@
+<form [formGroup]="dialogForm">      
+        
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 220px;margin-top: 0px;">
+            <mat-label>Account Name</mat-label>
+            <input type="email" matInput formControlName="dFaccName" >
+          </mat-form-field>
+          
+          <h2 style="padding-top: 8px;">Credentials</h2>
+          
+          <mat-form-field appearance="legacy" style="width:420px ;">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="dFemail">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="legacy" style="width:420px ;">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="dFpass">
+          </mat-form-field>
+          
+          <h2 style="padding-top: 8px;">Incoming Server Details</h2>
+          
+          <mat-form-field appearance="legacy" style="width: 200px;">
+            <mat-label>Incoming Server</mat-label>
+            <input type="text" matInput formControlName="dFincServer">
+          </mat-form-field>
+          
+          <mat-form-field appearance="legacy" style="margin-left: 12px;width: 200px;">
+            <mat-label>Incoming Server Port</mat-label>
+            <input type="text" matInput formControlName="dFincServPort">
+          </mat-form-field>
+          
+          <h2 style="padding-top: 8px;">Outgoing Server Details</h2>
+
+          <mat-form-field appearance="legacy" style="width: 200px;">
+            <mat-label>Outgoing Server</mat-label>
+            <input type="text" matInput formControlName="dFoutServer">
+          </mat-form-field>
+          
+          <mat-form-field appearance="legacy" style="margin-left: 12px;width: 200px;">
+            <mat-label>Outgoing Server Port</mat-label>
+            <input type="text" matInput formControlName="dFoutServPort">
+          </mat-form-field>
+          <br>
+          <br>
+          <button mat-raised-button (click)="saveAccData()" [disabled]="dialogForm.invalid">Save</button>
+          <button mat-raised-button [disabled]=true style="margin-left: 275px;">Delete</button>
+          <br>
+          <br>
+</form>

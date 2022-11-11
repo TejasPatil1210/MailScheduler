@@ -1,0 +1,46 @@
+{
+  "register": [
+    {
+      "rfemail": "tejupatil1210@gmail.com",
+      "rfpass": "123456",
+      "rfconfpass": "123456",
+      "id": 1
+    },
+    {
+      "rfemail": "tejupatil1210@0utlook.com",
+      "rfpass": "tejas123",
+      "rfconfpass": "tejas123",
+      "id": 2
+    },
+    {
+      "rfemail": "virat.kohli18@gmail.com",
+      "rfpass": "098765",
+      "rfconfpass": "098765",
+      "id": 3
+    },
+    {
+      "rfemail": "rohitsharma@gmail.com",
+      "rfpass": "123456",
+      "rfconfpass": "123456",
+      "id": 4
+    },
+    {
+      "rfemail": "virat.kohli18@gmail.com",
+      "rfpass": "456789",
+      "rfconfpass": "456789",
+      "id": 5
+    }
+  ],
+  "authenticate": [
+    {
+      "email": "rohitsharma@gmail.com",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "email": "virat.kohli18@gmail.com",
+      "password": "456789",
+      "id": 3
+    }
+  ]
+}
